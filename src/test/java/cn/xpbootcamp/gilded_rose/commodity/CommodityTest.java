@@ -21,8 +21,11 @@ class CommodityTest {
   @Test
   void shouldThrowIllegalArgumentExceptionWhenSetQualityNotBetweenZeroAndFifty() {
     Commodity commodity = new Commodity();
-    assertThrows(IllegalArgumentException.class, () -> commodity.setQuality(-1));
-    assertThrows(IllegalArgumentException.class, () -> commodity.setQuality(51));
+    Exception except1 = assertThrows(IllegalArgumentException.class, () -> commodity.setQuality(-1));
+    assertThat(except1.getMessage(), is("Quality must be between [0.0, 50.0]"));
+
+    Exception except2 = assertThrows(IllegalArgumentException.class, () -> commodity.setQuality(51));
+    assertThat(except2.getMessage(), is("Quality must be between [0.0, 50.0]"));
   }
 
   @Test

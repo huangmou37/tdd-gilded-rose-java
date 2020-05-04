@@ -20,7 +20,7 @@ public class Commodity {
 
   public void setQuality(double quality) {
     if (quality > MAX_QUALITY || quality < MIN_QUALITY) {
-      throw new IllegalArgumentException(String.format("Quality must be between [{}, {}]", MIN_QUALITY, MAX_QUALITY));
+      throw new IllegalArgumentException(String.format("Quality must be between [%s, %s]", MIN_QUALITY, MAX_QUALITY));
     }
 
     this.quality = quality;
@@ -30,9 +30,9 @@ public class Commodity {
     sellIn -= i;
 
     if (sellIn < 0) {
-      quality = max(0.0, quality - DEFAULT_QUALITY_DROPDOWN_PER_DAY * 2);
+      quality = max(0.0, quality - DEFAULT_QUALITY_DROPDOWN_PER_DAY * 2 * i);
     } else {
-      quality = max(0.0, quality - DEFAULT_QUALITY_DROPDOWN_PER_DAY * 1);
+      quality = max(0.0, quality - DEFAULT_QUALITY_DROPDOWN_PER_DAY * 1 * i);
     }
   }
 }
