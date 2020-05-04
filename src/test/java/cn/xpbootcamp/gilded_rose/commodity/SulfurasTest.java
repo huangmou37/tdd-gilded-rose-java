@@ -9,9 +9,7 @@ class SulfurasTest {
 
   @Test
   void shouldRemainQualityUnchangedWhenGivenAnySellInAndPassDays() {
-    Commodity sulfuras = new Sulfuras();
-    sulfuras.setQuality(30);
-    sulfuras.setSellIn(Integer.MIN_VALUE);
+    Commodity sulfuras = new Sulfuras(30);
     sulfuras.passDays(Integer.MAX_VALUE);
 
     assertThat(sulfuras.getQuality(), is(30.0));

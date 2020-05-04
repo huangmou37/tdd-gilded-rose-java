@@ -6,6 +6,10 @@ public class AgedBrie extends Commodity {
 
   private static final double QUALITY_INCREASE_PER_DAY = 1.0;
 
+  public AgedBrie(double quality) {
+    super(quality, Integer.MAX_VALUE);
+  }
+
   @Override
   public void passDays(int days) {
     if (days <= 0) {

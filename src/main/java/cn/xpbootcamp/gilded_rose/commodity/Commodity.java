@@ -18,6 +18,11 @@ public class Commodity {
   protected static final double MAX_QUALITY = 50.0;
   protected static final double MIN_QUALITY = 0.0;
 
+  public Commodity(double quality, int sellIn) {
+    setQuality(quality);
+    setSellIn(sellIn);
+  }
+
   public void setQuality(double quality) {
     if (quality > MAX_QUALITY || quality < MIN_QUALITY) {
       throw new IllegalArgumentException(String.format("Quality must be between [%s, %s]", MIN_QUALITY, MAX_QUALITY));

@@ -6,6 +6,10 @@ public class BackstagePass extends Commodity {
 
   private static final double QUALITY_INCREASE_PER_DAY = 1.0;
 
+  public BackstagePass(double quality, int sellIn) {
+    super(quality, sellIn);
+  }
+
   @Override
   public void passDays(int days) {
     if (days <= 0) {

@@ -9,9 +9,7 @@ class BackstagePassTest {
 
   @Test
   void shouldIncreaseQualityByOneWhenSellInLargerThanTen() {
-    Commodity backstagePass = new BackstagePass();
-    backstagePass.setQuality(10);
-    backstagePass.setSellIn(30);
+    Commodity backstagePass = new BackstagePass(10, 30);
 
     for (int i = 30; i > 10; i--) {
       double originalQuality = backstagePass.getQuality();
@@ -22,9 +20,7 @@ class BackstagePassTest {
 
   @Test
   void shouldIncreaseQualityByTwoWhenSellInBetweenFiveAndTen() {
-    Commodity backstagePass = new BackstagePass();
-    backstagePass.setQuality(10);
-    backstagePass.setSellIn(10);
+    Commodity backstagePass = new BackstagePass(10, 10);
 
     for (int i = 10; i > 5; i--) {
       double originalQuality = backstagePass.getQuality();
@@ -35,9 +31,7 @@ class BackstagePassTest {
 
   @Test
   void shouldIncreaseQualityByTwoWhenSellInBetweenZeroAndFive() {
-    Commodity backstagePass = new BackstagePass();
-    backstagePass.setQuality(10);
-    backstagePass.setSellIn(5);
+    Commodity backstagePass = new BackstagePass(10, 5);
 
     for (int i = 5; i > 0; i--) {
       double originalQuality = backstagePass.getQuality();
@@ -48,9 +42,7 @@ class BackstagePassTest {
 
   @Test
   void shouldReturnQualityAsZeroWhenExpire() {
-    Commodity backstagePass = new BackstagePass();
-    backstagePass.setQuality(10);
-    backstagePass.setSellIn(0);
+    Commodity backstagePass = new BackstagePass(10, 0);
 
     backstagePass.passDays(1);
     assertThat(backstagePass.getQuality(), is(0.0));

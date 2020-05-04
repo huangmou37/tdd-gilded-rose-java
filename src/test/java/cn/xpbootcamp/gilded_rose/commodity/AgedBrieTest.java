@@ -10,8 +10,7 @@ class AgedBrieTest {
 
   @Test
   void shouldThrowIllegalArgumentExceptionWhenPassDaysLessThanOne() {
-    Commodity agedBrie = new AgedBrie();
-    agedBrie.setQuality(30);
+    Commodity agedBrie = new AgedBrie(30);
 
     Exception except = assertThrows(IllegalArgumentException.class, () -> agedBrie.passDays(0));
     assertThat(except.getMessage(), is("'days' should be larger than 0"));
@@ -19,9 +18,7 @@ class AgedBrieTest {
 
   @Test
   void shouldReturnQualityIncreasedEveryDay() {
-    Commodity agedBrie = new AgedBrie();
-    agedBrie.setQuality(30);
-    agedBrie.setSellIn(Integer.MIN_VALUE);
+    Commodity agedBrie = new AgedBrie(30);
 
     agedBrie.passDays(5);
     assertThat(agedBrie.getQuality(), is(35.0));
@@ -29,9 +26,7 @@ class AgedBrieTest {
 
   @Test
   void shouldReturnQualityAsFiftyWhenPassDaysWithMaximumValue() {
-    Commodity agedBrie = new AgedBrie();
-    agedBrie.setQuality(30);
-    agedBrie.setSellIn(Integer.MIN_VALUE);
+    Commodity agedBrie = new AgedBrie(30);
 
     agedBrie.passDays(Integer.MAX_VALUE);
     assertThat(agedBrie.getQuality(), is(50.0));

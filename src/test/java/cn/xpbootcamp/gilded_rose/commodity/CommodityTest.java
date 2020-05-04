@@ -10,9 +10,7 @@ class CommodityTest {
 
   @Test
   void shouldReturnQualityThatAlwaysBetweenZeroAndFifty() {
-    Commodity commodity = new Commodity();
-    commodity.setQuality(50);
-    commodity.setSellIn(10);
+    Commodity commodity = new Commodity(50, 10);
 
     commodity.passDays(Integer.MAX_VALUE);
     assertThat(commodity.getQuality() >= 0 && commodity.getQuality() <= 50, is(true));
@@ -20,7 +18,7 @@ class CommodityTest {
 
   @Test
   void shouldThrowIllegalArgumentExceptionWhenSetQualityNotBetweenZeroAndFifty() {
-    Commodity commodity = new Commodity();
+    Commodity commodity = new Commodity(50, 10);
     Exception except1 = assertThrows(IllegalArgumentException.class, () -> commodity.setQuality(-1));
     assertThat(except1.getMessage(), is("Quality must be between [0.0, 50.0]"));
 
@@ -30,9 +28,7 @@ class CommodityTest {
 
   @Test
   void shouldThrowIllegalArgumentExceptionWhenPassDaysLessThanOne() {
-    Commodity commodity = new Commodity();
-    commodity.setQuality(10.0);
-    commodity.setSellIn(5);
+    Commodity commodity = new Commodity(10, 5);
 
     Exception except = assertThrows(IllegalArgumentException.class, () -> commodity.passDays(0));
     assertThat(except.getMessage(), is("'days' should be larger than 0"));
@@ -40,9 +36,7 @@ class CommodityTest {
 
   @Test
   void shouldReturnQualityThatDropDownInDefaultSpeedWhenNotExpired() {
-    Commodity commodity = new Commodity();
-    commodity.setSellIn(10);
-    commodity.setQuality(30);
+    Commodity commodity = new Commodity(30, 10);
 
     commodity.passDays(5);
     assertThat(commodity.getQuality(), is(25.0));
@@ -50,9 +44,7 @@ class CommodityTest {
 
   @Test
   void shouldReturnQualityThatDropDownInDoubleSpeedWhenExpired() {
-    Commodity commodity = new Commodity();
-    commodity.setSellIn(0);
-    commodity.setQuality(30);
+    Commodity commodity = new Commodity(30, 0);
 
     for (int i = 0; i < 5; i++) {
       double originalQuality = commodity.getQuality();
