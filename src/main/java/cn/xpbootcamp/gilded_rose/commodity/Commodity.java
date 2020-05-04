@@ -26,13 +26,17 @@ public class Commodity {
     this.quality = quality;
   }
 
-  public void passDays(int i) {
-    sellIn -= i;
+  public void passDays(int days) {
+    if (days <= 0) {
+      throw new IllegalArgumentException("'days' should be larger than 0");
+    }
+
+    setSellIn(getSellIn() - days);
 
     if (sellIn < 0) {
-      quality = max(0.0, quality - DEFAULT_QUALITY_DROPDOWN_PER_DAY * 2 * i);
+      setQuality(max(0.0, quality - DEFAULT_QUALITY_DROPDOWN_PER_DAY * 2 * days));
     } else {
-      quality = max(0.0, quality - DEFAULT_QUALITY_DROPDOWN_PER_DAY * 1 * i);
+      setQuality(max(0.0, quality - DEFAULT_QUALITY_DROPDOWN_PER_DAY * 1 * days));
     }
   }
 }

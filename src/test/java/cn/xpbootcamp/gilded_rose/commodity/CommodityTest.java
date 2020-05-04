@@ -29,6 +29,16 @@ class CommodityTest {
   }
 
   @Test
+  void shouldThrowIllegalArgumentExceptionWhenPassDaysLessThanOne() {
+    Commodity commodity = new Commodity();
+    commodity.setQuality(10.0);
+    commodity.setSellIn(5);
+
+    Exception except = assertThrows(IllegalArgumentException.class, () -> commodity.passDays(0));
+    assertThat(except.getMessage(), is("'days' should be larger than 0"));
+  }
+
+  @Test
   void shouldReturnQualityThatDropDownInDefaultSpeedWhenNotExpired() {
     Commodity commodity = new Commodity();
     commodity.setSellIn(10);
