@@ -13,10 +13,10 @@ public class Commodity {
   @Setter
   private int sellIn;
 
-  private static final double DEFAULT_QUALITY_DROPDOWN_PER_DAY = 1.0;
+  protected static final double DEFAULT_QUALITY_DROPDOWN_PER_DAY = 1.0;
 
-  private static final double MAX_QUALITY = 50.0;
-  private static final double MIN_QUALITY = 0.0;
+  protected static final double MAX_QUALITY = 50.0;
+  protected static final double MIN_QUALITY = 0.0;
 
   public void setQuality(double quality) {
     if (quality > MAX_QUALITY || quality < MIN_QUALITY) {

@@ -4,7 +4,7 @@ import static java.lang.Math.min;
 
 public class AgedBrie extends Commodity {
 
-  private static final double DEFAULT_QUALITY_INCREASE_PER_DAY = 1.0;
+  private static final double QUALITY_INCREASE_PER_DAY = 1.0;
 
   @Override
   public void passDays(int days) {
@@ -12,6 +12,6 @@ public class AgedBrie extends Commodity {
       throw new IllegalArgumentException("'days' should be larger than 0");
     }
 
-    setQuality(min(50.0, getQuality() + DEFAULT_QUALITY_INCREASE_PER_DAY * days));
+    setQuality(min(MAX_QUALITY, getQuality() + QUALITY_INCREASE_PER_DAY * days));
   }
 }
