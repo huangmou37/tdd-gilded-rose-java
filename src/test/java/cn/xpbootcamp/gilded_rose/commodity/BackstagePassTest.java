@@ -39,7 +39,7 @@ class BackstagePassTest {
     backstagePass.setQuality(10);
     backstagePass.setSellIn(5);
 
-    for (int i = 5; i >= 0; i--) {
+    for (int i = 5; i > 0; i--) {
       double originalQuality = backstagePass.getQuality();
       backstagePass.passDays(1);
       assertThat(backstagePass.getQuality(), is(originalQuality + 3.0));
