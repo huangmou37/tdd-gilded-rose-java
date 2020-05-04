@@ -28,15 +28,11 @@ class CommodityTest {
   @Test
   void shouldReturnQualityThatDropDownInDefaultSpeedWhenNotExpired() {
     Commodity commodity = new Commodity();
-    commodity.setSellIn(5);
+    commodity.setSellIn(10);
     commodity.setQuality(30);
 
-    for (int i = 0; i < 5; i++) {
-      double originalQuality = commodity.getQuality();
-      commodity.passDays(1);
-      double newQuality = commodity.getQuality();
-      assertThat(newQuality, is(originalQuality - 1.0));
-    }
+    commodity.passDays(5);
+    assertThat(commodity.getQuality(), is(25.0));
   }
 
   @Test
